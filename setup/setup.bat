@@ -8,9 +8,6 @@ SET "SCRIPT_DIR=%~dp0"
 REM Switch to batch dir, then to project root
 CD %SCRIPT_DIR%\..
 
-ECHO PATH
-ECHO %CD%
-
 REM Check if venv exists
 IF EXIST "venv" (
     ECHO Virtual environment already exists.
