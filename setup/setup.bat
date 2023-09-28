@@ -5,11 +5,11 @@ REM Configures Python setup for project
 REM Get the directory of the batch script
 SET "SCRIPT_DIR=%~dp0"
 
-REM Set project ROOT_DIR to the parent directory of the script
-SET "ROOT_DIR=%SCRIPT_DIR:~0,-1%"
+REM Switch to batch dir, then to project root
+CD %SCRIPT_DIR%\..
 
-ECHO Switching to project root dir: %ROOT_DIR%
-CD /D "%ROOT_DIR%"
+ECHO PATH
+ECHO %CD%
 
 REM Check if venv exists
 IF EXIST "venv" (
@@ -28,6 +28,6 @@ IF EXIST "venv" (
 )
 
 ECHO Installing packages into virtual environment...
-START CMD /k "%ROOT_DIR%\venv\Scripts\activate.bat && pip install -r %ROOT_DIR%\requirements.txt && pre-commit install"
+START CMD /k ".\venv\Scripts\activate.bat && pip install -r .\requirements.txt && pre-commit install"
 
 PAUSE
