@@ -59,7 +59,7 @@ repos:
         language: python
         types: [python]
         pass_filenames: false
-        stages: [commit]
+        stages: [push]
 
 # CHeck test coverage
 - repo: local
@@ -70,4 +70,4 @@ repos:
       language: python
       types: [python]
       pass_filenames: false
-      stages: [commit]
+      stages: [push]
