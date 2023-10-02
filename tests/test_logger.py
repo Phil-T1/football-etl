@@ -15,11 +15,11 @@ def test_instantiate_logger(logger):
     # Check if the logger is correctly configured
     assert isinstance(logger, logging.Logger)
 
-    # Check if the logger has a StreamHandler
+    # Check if the logger has a Stream Handler and Console Handler
     stream_handler_exists = False
     for handler in logger.handlers:
         if isinstance(handler, logging.StreamHandler):
             stream_handler_exists = True
             assert handler.level == logging.DEBUG
-
-    assert stream_handler_exists  # Ensure StreamHandler exists
+    # Check handlers exist
+    assert stream_handler_exists
