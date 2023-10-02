@@ -53,23 +53,23 @@ repos:
 # Run unittests through coverage
 - repo: local
   hooks:
-    -   id: unittest
-        name: unittest
-        entry: coverage run -m unittest discover -s tests
+    -   id: pytest
+        name: pytest
+        entry: coverage run -m pytest tests/
         language: python
         types: [python]
         pass_filenames: false
         always_run: true
-        stages: [push]
+        stages: [commit]
 
 # CHeck test coverage
 - repo: local
   hooks:
-  -   id: test-coverage
-      name: test-coverage
+  -   id: coverage
+      name: coverage
       entry:  coverage report --omit=./tests/test_*.py --fail-under=100
       language: python
       types: [python]
       pass_filenames: false
       always_run: true
-      stages: [push]
+      stages: [commit]

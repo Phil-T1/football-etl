@@ -1,39 +1,15 @@
 """Logging functions."""
 
 import logging
+import logging.config
 
 
-def initialise_logger():
-    """Initialise logger."""
-    logging.basicConfig(
-        level=logging.INFO, format="%(asctime)s - %(levelname)s - %(message)s"
-    )
+def instantiate_logger(logger_name: str = "simpleExample"):
+    """Create loggging instance."""
+    # Loads The Config File
+    logging.config.fileConfig("logging.conf")
 
-
-def file_handler():
-    """Configure file logging."""
-    file_handler = logging.FileHandler("football_table_standings.log")
-    file_handler.setLevel(logging.DEBUG)
-    file_handler.setFormatter(
-        logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
-    )
-
-
-def console_handler():
-    """Configure console logging."""
-    console_handler = logging.StreamHandler()
-    console_handler.setLevel(logging.DEBUG)
-    console_handler.setFormatter(
-        logging.Formatter("%(asctime)s - %(levelname)s - %(message)s")
-    )
-
-
-def instantiate_logger():
-    """Create logging instance."""
-    # Instantiate the logger object
-    logger = logging.getLogger()
-    # Add the file handler to the logger
-    logger.addHandler(file_handler())
-    # Add the console handler to the logger
-    logger.addHandler(console_handler())
-    return logger
+    # Create a logger with the name from the config file.
+    # This logger now has StreamHandler with DEBUG Level,
+    # and the specified format in the logging.conf file
+    return logging.getLogger(logger_name)
