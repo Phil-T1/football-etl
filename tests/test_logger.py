@@ -5,8 +5,6 @@ import logging
 import logging.config
 from src.logger import instantiate_logger
 
-# Assuming you have a sample 'logging.conf' file in the same directory
-
 
 @pytest.fixture
 def logger():
